@@ -37,12 +37,13 @@ public class LanguageTest {
 		webdriver.findElement(By.cssSelector("#secondaryNav > div > button")).click();
 		
 		Select region = new Select(webdriver.findElement(By.id("site-selector")));
-	    region.selectByValue("300000014");
+	    region.selectByValue("300000007");
 	    Thread.sleep(1000);
-		Select language = new Select(webdriver.findElement(By.id("language-selector")));
-	    language.selectByValue("de_CH");
+
 	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/div[2]/div/div[2]/div[4]/button")).click();
-		
+		Thread.sleep(2000);
+		WebElement signInText = webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[1]/div[4]/header/nav/div/div[4]/button"));
+		assertEquals(signInText.getText(),"Accedi");
 		Thread.sleep(2000);
 	}
 	
