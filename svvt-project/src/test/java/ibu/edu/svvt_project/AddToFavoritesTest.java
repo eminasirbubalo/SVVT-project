@@ -61,7 +61,14 @@ public class AddToFavoritesTest {
 	    Thread.sleep(2000);
 	    js.executeScript("window.scrollBy(0, 300)");
 	    webdriver.findElement(By.linkText("Point A Hotel Dublin Parnell Street")).click();
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div[1]/div[2]/div[1]/div[1]/div/div[2]/div/label"))).click();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div[1]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div[1]/label"))).click();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div[2]/section/div[2]/div/div[1]/button"))).click();
+	    WebElement tripName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div[2]/section/div[2]/div/form/div[1]/div/div/input")));
+	    tripName.sendKeys("Hotel in Dublin");
+	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div[2]/section/div[2]/div/form/div[3]/button")).click();
+	    Thread.sleep(2000);
+	    String saved = webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div[1]/div[2]/div[1]/div[1]/div/div[2]/div/div[2]")).getText();
+	    assertEquals(saved,"Saved");
 	    
 		}
 	}

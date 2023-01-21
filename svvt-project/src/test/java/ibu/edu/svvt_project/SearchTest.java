@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,21 +38,22 @@ public class SearchTest {
 	}
 	
 	@Test
-	 void Search() throws InterruptedException {
+	 void SearchWithFilters() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) webdriver;
 		webdriver.get(baseUrl);
-		webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[1]/div/div/div/div[1]/div[1]/button")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[1]/div/div/div/div[1]/div[1]/button"))).click();
 		WebElement goingTo = webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[1]/div/div/div/div[2]/div[1]/div/input"));
 	    goingTo.sendKeys("Zagreb");
 
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" /html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div[2]/div/div[1]/div/div/div/div[2]/div[2]/ul/li[1]/button"))).click();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"destination_form_field-menu\"]/div[2]/div[2]/ul/li[1]/button"))).click();
 	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[4]/button")).click();
-	    try {
-	        Thread.sleep(5000);
-	      } catch (InterruptedException e) {
-	        e.printStackTrace();
-	      }
-	    WebElement city = webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[1]/section[1]/div/form/div[1]/div/div/div/div[1]/div[1]/button"));
-	    assertEquals(city.getText(),"Zagreb, Croatia");
+	    Thread.sleep(3000);
+	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[1]/fieldset/div[4]/div/div/input")).click();
+	    js.executeScript("window.scrollBy(0, 400)");
+	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[3]/fieldset/fieldset/div[2]/div/label/input")).click();
+	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[4]/div/div/div[5]/label")).click();
+	    String text =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[2]/section/header/div/div[1]/div/div"))).getText();
+	    assertEquals(text,"2 properties");
 	}
 	
 }
