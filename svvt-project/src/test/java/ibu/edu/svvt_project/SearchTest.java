@@ -57,7 +57,7 @@ public class SearchTest {
 	    Thread.sleep(2000);
 	    js.executeScript("window.scrollBy(0, 800)");
 	    Thread.sleep(1000);
-	    //filters
+	    //filter
 	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[6]/fieldset/div[2]/div[1]/div/div[2]/div/div/input")).click();
 	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[3]/fieldset/fieldset/div[2]/div/label/input")).click();
 	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[4]/div/div/div[5]/label")).click();

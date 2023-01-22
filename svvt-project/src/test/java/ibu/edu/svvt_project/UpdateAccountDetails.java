@@ -42,7 +42,7 @@ public class UpdateAccountDetails {
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[1]/div[4]/header/nav/div/div[4]/button"))).click();
 	    Thread.sleep(1000);
 	    webdriver.findElement(By.linkText("Sign in")).click();
-	    //sign in
+	    //login
 	    WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginFormEmailInput")));
 	    email.sendKeys("sirbubaloe@gmail.com");
 	    WebElement password = webdriver.findElement(By.id("loginFormPasswordInput"));

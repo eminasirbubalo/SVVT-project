@@ -43,7 +43,7 @@ public class SaveTripTest {
 	 void saveATrip() throws InterruptedException {
 		webdriver.get(baseUrl);
 		JavascriptExecutor js = (JavascriptExecutor) webdriver;
-		//first login
+		//login
 	    webdriver.get(baseUrl);
 	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[1]/div[4]/header/nav/div/div[4]/button")).click();
 	    Thread.sleep(1000);
