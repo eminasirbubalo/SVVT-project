@@ -60,7 +60,7 @@ class HotelTest {
 		webDriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section[1]/div/div/div/form/div/div[3]/button")).click();
 		Thread.sleep(5000);
 		Select sort=new Select(webDriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[2]/section/header/div/div[2]/div/form/div/div/select")));
-		sort.selectByVisibleText("Price");
+		sort.selectByIndex(2);
 		
 	
 	
