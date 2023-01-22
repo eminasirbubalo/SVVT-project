@@ -39,7 +39,7 @@ public class UpdateAccountDetails {
 	@Test
 	 void UpdateAccDetails() throws InterruptedException {
 	    webdriver.get(baseUrl);
-	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[1]/div[4]/header/nav/div/div[4]/button")).click();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[1]/div[4]/header/nav/div/div[4]/button"))).click();
 	    Thread.sleep(1000);
 	    webdriver.findElement(By.linkText("Sign in")).click();
 	    //sign in
@@ -53,7 +53,7 @@ public class UpdateAccountDetails {
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Account"))).click();
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/div/div[1]/div/ul/li[1]/a"))).click();
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" /html/body/div[2]/div/div/div[1]/div/ul/li[1]/div[2]/div[2]/button"))).click();
-	    //change zip number
+	    //change Zip number
 	    WebElement zip = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-details-zip")));
 	    zip.sendKeys("71000");
 	    webdriver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/ul/li[1]/div[2]/div[3]/form/button[1]")).click();

@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AddToFavoritesTest {
+public class SaveTripTest {
 	
 	private static WebDriver webdriver;
 	private static String baseUrl;
@@ -40,10 +40,9 @@ public class AddToFavoritesTest {
 	}
 	
 	@Test
-	 void AddToFavorites() throws InterruptedException {
+	 void saveATrip() throws InterruptedException {
 		webdriver.get(baseUrl);
 		JavascriptExecutor js = (JavascriptExecutor) webdriver;
-		
 		//first login
 	    webdriver.get(baseUrl);
 	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[1]/div[4]/header/nav/div/div[4]/button")).click();
@@ -55,7 +54,7 @@ public class AddToFavoritesTest {
 	    password.sendKeys("Passw0rd123!");
 	    webdriver.findElement(By.id("loginFormSubmitButton")).click();
 		Thread.sleep(5000);
-		//add hotel to favorites
+		//save hotel to trips
 		js.executeScript("window.scrollBy(0, 600)");
 	    webdriver.findElement(By.linkText("Hotels")).click();
 	    Thread.sleep(2000);

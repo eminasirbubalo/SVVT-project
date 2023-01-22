@@ -41,17 +41,27 @@ public class SearchTest {
 	 void SearchWithFilters() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) webdriver;
 		webdriver.get(baseUrl);
+		//choose place
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[1]/div/div/div/div[1]/div[1]/button"))).click();
 		WebElement goingTo = webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[1]/div/div/div/div[2]/div[1]/div/input"));
 	    goingTo.sendKeys("Zagreb");
-
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"destination_form_field-menu\"]/div[2]/div[2]/ul/li[1]/button"))).click();
-	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[4]/button")).click();
-	    Thread.sleep(3000);
-	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[1]/fieldset/div[4]/div/div/input")).click();
-	    js.executeScript("window.scrollBy(0, 400)");
+	    //choose dates
+	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[2]/div/div/div/div/button[1]")).click();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"lodging_search_form\"]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[2]/button"))).click();
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"lodging_search_form\"]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[5]/button"))).click();
+	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[2]/div/div/div/div[2]/div/div[2]/div/button"));
+	    webdriver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/section/form/div/div/div[2]/div/div/div/div[2]/div/div[2]/div/button")).click();
+	    Thread.sleep(2000);
+	    webdriver.findElement(By.id("search_button")).click();
+	    Thread.sleep(2000);
+	    js.executeScript("window.scrollBy(0, 800)");
+	    Thread.sleep(1000);
+	    //filters
+	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[6]/fieldset/div[2]/div[1]/div/div[2]/div/div/input")).click();
 	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[3]/fieldset/fieldset/div[2]/div/label/input")).click();
 	    webdriver.findElement(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[1]/section/div[2]/form/div[2]/div[4]/div/div/div[5]/label")).click();
+	  
 	    String text =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/main/div/div/div/div/div[2]/section[2]/div/div[2]/div/div[2]/section/header/div/div[1]/div/div"))).getText();
 	    assertEquals(text,"2 properties");
 	}
