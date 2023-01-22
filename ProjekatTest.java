@@ -33,7 +33,7 @@ class ProjekatTest {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		
-		webDriver=new ChromeDriver();
+		webDriver=new ChromeDriver(options);
 		baseUrl="https://www.hotels.com/";
 	}
 	@AfterAll
@@ -55,7 +55,7 @@ class ProjekatTest {
 		
 		WebElement feedback=webDriver.findElement(By.xpath("//*[@id=\"article-detail-20776\"]/div[1]"));
 		assertEquals("Thank you for your feedback",feedback.getText());
-		
+		Thread.sleep(5000);
 		webDriver.get(baseUrl);
 	}
 	
